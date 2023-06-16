@@ -328,9 +328,22 @@ class Builder extends \Illuminate\Database\Query\Builder
     }
 
     /**
-     * Flush the cache for the current model or a given tag name
+     * Forget the keyed cache entries
      *
-     * @param  mixed  $cacheTags
+     * @param  array  $keys
+     * @return boolean
+     */
+    public function forgetKeys($keys)
+    {
+        foreach ($keys as $key) {
+            $this->forgetKey($key);
+        }
+    }
+
+    /**
+     * Forget the keyed cache entry
+     *
+     * @param  string  $key
      * @return boolean
      */
     public function forgetKey($key)
